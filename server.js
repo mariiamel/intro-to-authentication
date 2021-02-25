@@ -9,10 +9,17 @@ app.set('view engine', 'ejs')
 app.use(require('express-ejs-layouts'))
 app.use(express.urlencoded({ extended: false }))
 
+app.get('/signUp', (req, res) => {
+  res.render('signUp')
+})
+
 // routes
 app.get('/', (req, res) => {
   res.render('index')
 })
+
+
+app.use('/users', require('./controllers/userController'))
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
